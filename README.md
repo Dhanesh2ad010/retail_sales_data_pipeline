@@ -1,11 +1,11 @@
-# 🛒 Retail Sales Data Pipeline — Kafka + PostgreSQL
+# Retail Sales Data Pipeline — Kafka + PostgreSQL
 
 A real-time retail sales data pipeline built with **Apache Kafka** and **PostgreSQL**.  
 The producer continuously generates simulated sales transaction events; the consumer reads those events, validates them, and persists them into a PostgreSQL database with exactly-once-style guarantees.
 
 ---
 
-## 📐 Architecture
+## Architecture
 
 ```
 producer.py  ──►  Kafka Topic (sales-events)  ──►  consumer.py  ──►  PostgreSQL
@@ -20,7 +20,7 @@ producer.py  ──►  Kafka Topic (sales-events)  ──►  consumer.py  ─�
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 kafka-retail-project/
@@ -32,7 +32,7 @@ kafka-retail-project/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -132,7 +132,7 @@ export PGPASSWORD=your_password
 
 ---
 
-## ▶️ Running the Pipeline
+## Running the Pipeline
 
 Open **two separate terminals**.
 
@@ -166,7 +166,7 @@ Sent transaction 1234567891 | Mouse  | Amount: 1500.00   | Partition: 1 | Offset
 
 ---
 
-## 📦 Kafka Event Schema
+## Kafka Event Schema
 
 Each message published to `sales-events` is a JSON object with the following fields:
 
@@ -196,7 +196,7 @@ Each message published to `sales-events` is a JSON object with the following fie
 
 ---
 
-## 🛒 Sample Products
+## Sample Products
 
 | Product | Unit Price (INR) |
 |---|---|
@@ -208,7 +208,7 @@ Each message published to `sales-events` is a JSON object with the following fie
 
 ---
 
-## 🔒 Data Integrity & Reliability
+## Data Integrity & Reliability
 
 - **At-least-once delivery**: Producer uses `acks="all"` with `retries=3`.
 - **Duplicate prevention**: Consumer uses `ON CONFLICT (transaction_id) DO NOTHING` in PostgreSQL.
@@ -218,7 +218,7 @@ Each message published to `sales-events` is a JSON object with the following fie
 
 ---
 
-## 🧰 Dependencies
+## Dependencies
 
 | Package | Version | Purpose |
 |---|---|---|
@@ -227,7 +227,7 @@ Each message published to `sales-events` is a JSON object with the following fie
 
 ---
 
-## 🧪 Verifying Data in PostgreSQL
+## Verifying Data in PostgreSQL
 
 ```sql
 -- Total transactions ingested
@@ -250,12 +250,12 @@ ORDER  BY store_id;
 
 ---
 
-## 🛑 Stopping the Pipeline
+## Stopping the Pipeline
 
 Press `Ctrl + C` in each terminal. Both the producer and consumer handle `KeyboardInterrupt` gracefully and close their connections cleanly.
 
 ---
 
-## 📄 License
+## License
 
 This project is open-source and available under the [MIT License](LICENSE).
